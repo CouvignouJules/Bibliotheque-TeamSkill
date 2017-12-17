@@ -1,7 +1,25 @@
+package fr.ynov.biblioskill.metier.entities;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Utilisateur {
-	
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+import fr.ynov.biblioskill.utilitaire.AccountType;
+@Entity
+@Table(name ="utilisateur")
+@NamedQuery(name="lireUtilisateurs",query="SELECT u FROM Utilisateur u")
+public class Utilisateur implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String nomUtilisateur;
 	private String motDePasse;

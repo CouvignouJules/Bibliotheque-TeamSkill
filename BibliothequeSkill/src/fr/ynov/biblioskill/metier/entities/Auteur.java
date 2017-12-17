@@ -1,5 +1,26 @@
+package fr.ynov.biblioskill.metier.entities;
 
-public class Auteur {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+import fr.ynov.biblioskill.utilitaire.TypeAuteur;
+
+@Entity
+@Table(name ="auteur")
+@NamedQuery(name="lireAuteurs",query="SELECT a FROM Auteur a")
+public class Auteur implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String aProposDe;
 	private String nationalite;

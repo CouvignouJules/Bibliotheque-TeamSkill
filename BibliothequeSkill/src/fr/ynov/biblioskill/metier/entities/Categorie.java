@@ -1,6 +1,24 @@
+package fr.ynov.biblioskill.metier.entities;
 
-public class Categorie {
-	
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name ="categorie")
+@NamedQuery(name="lireCategories",query="SELECT c FROM Categorie c")
+public class Categorie implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String nom;
 	private String description;

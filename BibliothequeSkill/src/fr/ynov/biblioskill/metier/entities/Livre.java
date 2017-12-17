@@ -1,7 +1,26 @@
+package fr.ynov.biblioskill.metier.entities;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Livre {
-	
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name ="livre")
+@NamedQuery(name="lireLivres",query="SELECT l FROM Livre l")
+public class Livre implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)	
 	private Long id;
 	private String titre;
 	private String resume;
@@ -9,6 +28,12 @@ public class Livre {
 	private String isbn;
 	private String photo;
 	private Date datePublication;
+	@ManyToOne
+	@JoinColumn(name="idCategorie",referencedColumnName="idCategorie",updatable=false,insertable=false) 
+	private Categorie categorie;
+	@ManyToOne
+	@JoinColumn(name="idAuteur",referencedColumnName="idAuteur",updatable=false,insertable=false) 
+	private Auteur auteur;
 
 	public Livre() {
 		// TODO Auto-generated constructor stub
@@ -79,6 +104,22 @@ public class Livre {
 
 	public void setDatePublication(Date datePublication) {
 		this.datePublication = datePublication;
+	}
+
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+	public Auteur getAuteur() {
+		return auteur;
+	}
+
+	public void setAuteur(Auteur auteur) {
+		this.auteur = auteur;
 	}
 
 }
