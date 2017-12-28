@@ -1,6 +1,7 @@
 package fr.ynov.biblioskill.metier.entities;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import fr.ynov.biblioskill.utilitaire.AccountType;
 @Entity
@@ -24,7 +27,8 @@ public class Utilisateur implements Serializable {
 	private String nomUtilisateur;
 	private String motDePasse;
 	private AccountType statutCompte;
-	private Date derniereConnexion;
+	@Temporal(TemporalType.DATE)
+	private GregorianCalendar derniereConnexion;
 
 	public Utilisateur() {
 		// TODO Auto-generated constructor stub

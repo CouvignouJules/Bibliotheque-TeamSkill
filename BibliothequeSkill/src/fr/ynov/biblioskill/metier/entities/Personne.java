@@ -1,6 +1,7 @@
 package fr.ynov.biblioskill.metier.entities;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name ="personne")
@@ -25,13 +28,14 @@ public class Personne implements Serializable {
 	private String sexe;
 	private String photo;
 	private String email;
-	private Date dateDeNaissance;
+	@Temporal(TemporalType.DATE)
+	private GregorianCalendar dateDeNaissance;
 	
 	public Personne() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Personne(Long id, String nom, String prenom, String sexe, String photo, String email, Date dateDeNaissance) {
+	public Personne(Long id, String nom, String prenom, String sexe, String photo, String email, GregorianCalendar dateDeNaissance) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -92,11 +96,11 @@ public class Personne implements Serializable {
 		this.email = email;
 	}
 
-	public Date getDateDeNaissance() {
+	public GregorianCalendar getDateDeNaissance() {
 		return dateDeNaissance;
 	}
 
-	public void setDateDeNaissance(Date dateDeNaissance) {
+	public void setDateDeNaissance(GregorianCalendar dateDeNaissance) {
 		this.dateDeNaissance = dateDeNaissance;
 	}
 

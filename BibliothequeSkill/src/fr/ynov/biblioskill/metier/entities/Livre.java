@@ -1,6 +1,7 @@
 package fr.ynov.biblioskill.metier.entities;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name ="livre")
@@ -27,7 +30,8 @@ public class Livre implements Serializable {
 	private int quantite;
 	private String isbn;
 	private String photo;
-	private Date datePublication;
+	@Temporal(TemporalType.DATE)
+	private GregorianCalendar datePublication;
 	@ManyToOne
 	@JoinColumn(name="idCategorie",referencedColumnName="idCategorie",updatable=false,insertable=false) 
 	private Categorie categorie;
@@ -39,7 +43,7 @@ public class Livre implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Livre(Long id, String titre, String resume, int quantite, String isbn, String photo, Date datePublication) {
+	public Livre(Long id, String titre, String resume, int quantite, String isbn, String photo, GregorianCalendar datePublication) {
 		super();
 		this.id = id;
 		this.titre = titre;
@@ -98,11 +102,11 @@ public class Livre implements Serializable {
 		this.photo = photo;
 	}
 
-	public Date getDatePublication() {
+	public GregorianCalendar getDatePublication() {
 		return datePublication;
 	}
 
-	public void setDatePublication(Date datePublication) {
+	public void setDatePublication(GregorianCalendar datePublication) {
 		this.datePublication = datePublication;
 	}
 
