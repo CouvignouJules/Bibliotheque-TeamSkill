@@ -8,7 +8,7 @@
 		<class>fr.ynov.biblioskill.metier.entities.Pret</class>
 		<class>fr.ynov.biblioskill.metier.entities.Utilisateur</class>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zoo"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/biblioskill"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value=""/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
