@@ -5,8 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fr.ynov.biblioskill.metier.entities.Auteur;
 import fr.ynov.biblioskill.metier.entities.Categorie;
 import fr.ynov.biblioskill.metier.entities.Livre;
+import fr.ynov.biblioskill.metier.entities.Personne;
+import fr.ynov.biblioskill.metier.entities.Pret;
+import fr.ynov.biblioskill.metier.entities.Utilisateur;
 
 /**
  * 
@@ -14,77 +18,103 @@ import fr.ynov.biblioskill.metier.entities.Livre;
  *
  */
 public class CatalogueMetierImpl implements ICatalogueMetier{
+	private Map<Long, Auteur> auteurs = new HashMap<Long, Auteur>();
 	private Map<Long, Categorie> categories = new HashMap<Long, Categorie>();
-	private Map<Long, Livre> livres = new HashMap<Long, Livre>(); 
-	//TODO: exemple : Map<Long, Auteur> auteur = new HashMap<Long, Auteur>() 
-	//      -> rajouter les méthodes qu'il faut sur toutes les entités métiers :D
-	//      (ajoutez-les aussi dans ICatalogueMetier, hein... je vous voir venir)
+	private Map<Long, Livre> livres = new HashMap<Long, Livre>();
+	private Map<Long, Personne> personnes = new HashMap<Long, Personne>();
+	private Map<Long, Pret> prets = new HashMap<Long, Pret>();
+	private Map<Long, Utilisateur> utilisateurs = new HashMap<Long, Utilisateur>();
+	
+	/************************************** Auteurs ******************************************/
+	
+	@Override
+	public Auteur addAuteur(Auteur a) {
+		auteurs.put(a.getId(), a);		
+		return a;
+	}
+
+	@Override
+	public List<Auteur> listAuteurs() {
+		return new ArrayList<Auteur>(auteurs.values());
+	}
+
+	@Override
+	public Auteur getAuteur(Long idAuteur) {
+		return auteurs.get(idAuteur);
+	}
+
+	@Override
+	public Auteur updateAuteur(Auteur a) {
+		auteurs.put(a.getId(), a);
+		return a;
+	}
+
+	@Override
+	public boolean deleteAuteur(Long idAuteur) {
+		if(auteurs.get(idAuteur)!=null){
+			auteurs.remove(idAuteur);
+			return true;
+		}
+		else throw new RuntimeException("Auteur inconnu");
+	}
+	
+	/************************************** Catégories ******************************************/
 	
 	@Override
 	public Categorie addCategorie(Categorie c) {
 		categories.put(c.getId(), c);		
 		return c;
 	}
-
-	@Override
-	public Livre addLivre(Livre p) {
-		p.setCategorie(getCategorie(p.getCategorie().getId()));
-		livres.put(p.getId(), p);		
-		return p;
-	}
-
+	
 	@Override
 	public List<Categorie> listCategories() {
 		return new ArrayList<Categorie>(categories.values());
+	}
+	
+	@Override
+	public Categorie getCategorie(Long idCategorie) {
+		return categories.get(idCategorie);
+	}
+	
+	@Override
+	public Categorie updateCategorie(Categorie c) {
+		categories.put(c.getId(), c);
+		return c;
+	}
+	
+	@Override
+	public boolean deleteCategorie(Long idCategorie) {
+		if(categories.get(idCategorie)!=null){
+			categories.remove(idCategorie);
+			return true;
+		}
+		else throw new RuntimeException("Catégorie inexistante");
+	}
+	
+	/************************************** Livres ******************************************/
+
+	@Override
+	public Livre addLivre(Livre l) {
+		l.setCategorie(getCategorie(l.getCategorie().getId()));
+		l.setAuteur(getAuteur(l.getAuteur().getId()));
+		livres.put(l.getId(), l);		
+		return l;
 	}
 
 	@Override
 	public List<Livre> listLivres() {
 		return new ArrayList<Livre>(livres.values());
 	}
-
-	@Override
-	public List<Livre> livresParCat(Long idCategorie) {
-		List<Livre> books = new ArrayList<Livre>();
-		
-		for(Livre p:livres.values()){
-			if(p.getCategorie().getId().equals(idCategorie))
-				books.add(p);
-		}
-		return books;
-	}
-
-	@Override
-	public Categorie getCategorie(Long idCategorie) {
-		return categories.get(idCategorie);
-	}
-
+	
 	@Override
 	public Livre getLivre(Long idLivre) {
 		return livres.get(idLivre);
-	}
+	}	
 
 	@Override
-	public List<Livre> livresParAut(Long idAuteur) {
-		List<Livre> books = new ArrayList<Livre>();
-		
-		for(Livre p:livres.values()){
-			if(p.getAuteur().getId().equals(idAuteur))
-				books.add(p);
-		}
-		return books;
-	}
-
-	@Override
-	public Categorie updateCategorie(Categorie c) {
-		categories.put(c.getId(), c);
-		return c;
-	}
-
-	@Override
-	public Livre updateLivre(Livre p) {
-		livres.put(p.getId(), p);
-		return p;
+	public Livre updateLivre(Livre l) {
+		livres.put(l.getId(), l);
+		return l;
 	}
 
 	@Override
@@ -96,9 +126,131 @@ public class CatalogueMetierImpl implements ICatalogueMetier{
 		else throw new RuntimeException("Livre introuvable");
 	}
 	
+	/************************************** Personnes ******************************************/
+	
+	@Override
+	public Personne addPersonne(Personne p) {
+		personnes.put(p.getId(), p);
+		return p;
+	}
 
+	@Override
+	public List<Personne> listPersonnes() {
+		return new ArrayList<Personne>(personnes.values());
+	}
+
+	@Override
+	public Personne getPersonne(Long idPersonne) {
+		return personnes.get(idPersonne);
+	}
+
+	@Override
+	public Personne updatePersonne(Personne p) {
+		personnes.put(p.getId(), p);
+		return p;
+	}
+
+	@Override
+	public boolean deletePersonne(Long idPersonne) {
+		if(personnes.get(idPersonne)!=null){
+			personnes.remove(idPersonne);
+			return true;
+		}
+		else throw new RuntimeException("Personne introuvable");
+	}
+	
+	/************************************** Prêts ******************************************/
+	
+	@Override
+	public Pret addPret(Pret p) {
+		prets.put(p.getId(), p);
+		return p;
+	}
+
+	@Override
+	public List<Pret> listPret() {
+		return new ArrayList<Pret>(prets.values());
+	}
+
+	@Override
+	public Pret getPret(Long idPret) {
+		return prets.get(idPret);
+	}
+
+	@Override
+	public Pret updatePret(Pret p) {
+		prets.put(p.getId(), p);
+		return p;
+	}
+
+	@Override
+	public boolean deletePret(Long idPret) {
+		if(prets.get(idPret)!=null){
+			prets.remove(idPret);
+			return true;
+		}
+		else throw new RuntimeException("Pret non effectué");
+	}
+	
+	/************************************** Utilisateurs ******************************************/
+	
+	@Override
+	public Utilisateur addUtilisateur(Utilisateur u) {
+		utilisateurs.put(u.getId(), u);
+		return u;
+	}
+
+	@Override
+	public List<Utilisateur> listUtilisateur() {
+		return new ArrayList<Utilisateur>(utilisateurs.values());
+	}
+
+	@Override
+	public Utilisateur getUtilisateur(Long idUtilisateur) {
+		return utilisateurs.get(idUtilisateur);
+	}
+
+	@Override
+	public Utilisateur updateUtilisateur(Utilisateur u) {
+		utilisateurs.put(u.getId(), u);
+		return u;
+	}
+
+	@Override
+	public boolean deleteUtilisateur(Long idUtilisateur) {
+		if(utilisateurs.get(idUtilisateur)!=null){
+			prets.remove(idUtilisateur);
+			return true;
+		}
+		else throw new RuntimeException("Utilisateur inconnu");
+	}
+	
+	/************************************** Relations ******************************************/
+
+	@Override
+	public List<Livre> livresParCat(Long idCategorie) {
+		List<Livre> books = new ArrayList<Livre>();
+		
+		for(Livre l:livres.values()){
+			if(l.getCategorie().getId().equals(idCategorie))
+				books.add(l);
+		}
+		return books;
+	}
+	
+	@Override
+	public List<Livre> livresParAut(Long idAuteur) {
+		List<Livre> books = new ArrayList<Livre>();
+		
+		for(Livre l:livres.values()){
+			if(l.getAuteur().getId().equals(idAuteur))
+				books.add(l);
+		}
+		return books;
+	}
 	
 	public void initialiserCatalogue(){
 		//Initialisez toutes les listes grâce au Manager (un peu comme on faisait dans le main de YnovM ou de Zoo)
 	}
+
 }

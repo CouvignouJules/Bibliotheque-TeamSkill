@@ -35,7 +35,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	public Utilisateur(Long id, String nomUtilisateur, String motDePasse, AccountType statutCompte,
-			Date derniereConnexion) {
+			GregorianCalendar derniereConnexion) {
 		super();
 		this.id = id;
 		this.nomUtilisateur = nomUtilisateur;
@@ -76,11 +76,11 @@ public class Utilisateur implements Serializable {
 		this.statutCompte = statutCompte;
 	}
 
-	public Date getDerniereConnexion() {
+	public GregorianCalendar getDerniereConnexion() {
 		return derniereConnexion;
 	}
 
-	public void setDerniereConnexion(Date derniereConnexion) {
+	public void setDerniereConnexion(GregorianCalendar derniereConnexion) {
 		this.derniereConnexion = derniereConnexion;
 	}
 
