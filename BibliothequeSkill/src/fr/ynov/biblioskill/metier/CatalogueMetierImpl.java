@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fr.ynov.biblioskill.controleur.Manager;
 import fr.ynov.biblioskill.metier.entities.Auteur;
 import fr.ynov.biblioskill.metier.entities.Categorie;
 import fr.ynov.biblioskill.metier.entities.Livre;
@@ -249,8 +250,36 @@ public class CatalogueMetierImpl implements ICatalogueMetier{
 		return books;
 	}
 	
+	/**
+	 * Initialise toutes les listes
+	 */
 	public void initialiserCatalogue(){
 		//Initialisez toutes les listes grâce au Manager (un peu comme on faisait dans le main de YnovM ou de Zoo)
+		Manager m = Manager.getInstance();
+		
+		for(Auteur a : m.getAuteurs()) {
+			this.addAuteur(a);
+		}
+		
+		for(Categorie c : m.getCategories()) {
+			this.addCategorie(c);
+		}
+		
+		for(Livre l : m.getLivres()) {
+			this.addLivre(l);
+		}
+		
+		for(Personne p : m.getPersonnes()) {
+			this.addPersonne(p);
+		}
+		
+		for(Pret p : m.getPrets()) {
+			this.addPret(p);
+		}
+		
+		for(Utilisateur u : m.getUtilisateurs()) {
+			this.addUtilisateur(u);
+		}
 	}
 
 }

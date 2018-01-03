@@ -69,7 +69,5 @@ public class Auteur implements Serializable {
 	public void setType(TypeAuteur type) {
 		this.type = type;
 	}
-	
-	
 
 }
