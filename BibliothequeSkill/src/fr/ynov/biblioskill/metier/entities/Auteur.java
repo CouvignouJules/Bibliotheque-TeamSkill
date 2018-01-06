@@ -8,12 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import fr.ynov.biblioskill.utilitaire.TypeAuteur;
 
 @Entity
 @Table(name ="auteur")
 @NamedQuery(name="lireAuteurs",query="SELECT a FROM Auteur a")
+@XmlRootElement
 public class Auteur implements Serializable {
 	/**
 	 * 

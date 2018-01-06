@@ -13,10 +13,15 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonSetter;
 
 @Entity
 @Table(name ="livre")
 @NamedQuery(name="lireLivres",query="SELECT l FROM Livre l")
+@XmlRootElement
 public class Livre implements Serializable {
 	/**
 	 * 
@@ -110,18 +115,22 @@ public class Livre implements Serializable {
 		this.datePublication = datePublication;
 	}
 
+	@JsonIgnore
 	public Categorie getCategorie() {
 		return categorie;
 	}
 
+	@JsonSetter
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
 
+	@JsonIgnore
 	public Auteur getAuteur() {
 		return auteur;
 	}
 
+	@JsonSetter
 	public void setAuteur(Auteur auteur) {
 		this.auteur = auteur;
 	}

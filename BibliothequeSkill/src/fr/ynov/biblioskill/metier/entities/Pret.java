@@ -11,9 +11,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name ="pret")
 @NamedQuery(name="lirePrets",query="SELECT p FROM Pret p")
+@XmlRootElement
 public class Pret implements Serializable {
 	/**
 	 * 

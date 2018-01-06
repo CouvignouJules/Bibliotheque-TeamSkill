@@ -11,11 +11,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import fr.ynov.biblioskill.utilitaire.AccountType;
 @Entity
 @Table(name ="utilisateur")
 @NamedQuery(name="lireUtilisateurs",query="SELECT u FROM Utilisateur u")
+@XmlRootElement
 public class Utilisateur implements Serializable {
 	/**
 	 * 

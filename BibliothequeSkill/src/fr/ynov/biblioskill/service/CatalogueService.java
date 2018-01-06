@@ -17,8 +17,12 @@ import javax.ws.rs.core.MediaType;
 import com.sun.jersey.spi.resource.Singleton;
 
 import fr.ynov.biblioskill.metier.CatalogueMetierImpl;
+import fr.ynov.biblioskill.metier.entities.Auteur;
 import fr.ynov.biblioskill.metier.entities.Categorie;
 import fr.ynov.biblioskill.metier.entities.Livre;
+import fr.ynov.biblioskill.metier.entities.Personne;
+import fr.ynov.biblioskill.metier.entities.Pret;
+import fr.ynov.biblioskill.metier.entities.Utilisateur;
 
 /**
  * 
@@ -38,6 +42,45 @@ public class CatalogueService {
 		metier.initialiserCatalogue();
 	}
 	
+	/******************************/
+	
+	@GET
+	@Path("/auteurs")
+	@Produces(MediaType.APPLICATION_JSON+";charset=utf-8")
+	public List<Auteur> consulterAuteurs(){
+		return metier.listAuteurs();
+	}
+	
+	@PUT
+	@Path("/auteurs")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Auteur updateAuteur(Auteur a){
+		return metier.updateAuteur(a);
+	}
+	
+	@GET
+	@Path("/auteurs/{idAut}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Auteur getAuteur(@PathParam(value="idAut") Long idAuteur){
+		return metier.getAuteur(idAuteur);		
+	}
+	
+	@POST
+	@Path("/auteurs")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Auteur saveAuteur(Auteur a){
+		return metier.addAuteur(a);
+	}
+	
+	@DELETE
+	@Path("/auteurs")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean auteurs(@FormParam(value="idAut") Long idAuteur){
+		return metier.deleteAuteur(idAuteur);
+	}
+	
+	/******************************/
+	
 	@GET
 	@Path("/categories")
 	@Produces(MediaType.APPLICATION_JSON+";charset=utf-8")
@@ -45,25 +88,11 @@ public class CatalogueService {
 		return metier.listCategories();
 	}
 	
-	@GET
-	@Path("/livres")
-	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public List<Livre> consulterLivres(){
-		return metier.listLivres();
-	}
-	
-	@GET
-	@Path("/categories/{idCat}/livres")
+	@PUT
+	@Path("/categories")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Livre> livresParCat(@PathParam(value="idCat") Long idCategorie){
-		return metier.livresParCat(idCategorie);
-	}
-	
-	@GET
-	@Path("/livresAut")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Livre> livresParMC(@QueryParam(value="idAut")Long idAut){
-		return metier.livresParAut(idAut);
+	public Categorie updateCategorie(Categorie c){
+		return metier.updateCategorie(c);
 	}
 	
 	@GET
@@ -73,18 +102,41 @@ public class CatalogueService {
 		return metier.getCategorie(idCategorie);		
 	}
 	
-	@GET
-	@Path("/livres/{idProd}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Livre getLivre(@PathParam(value="idProd") Long idLivre){
-		return metier.getLivre(idLivre);
-	}
-	
 	@POST
 	@Path("/categories")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Categorie saveCategorie(Categorie c){
 		return metier.addCategorie(c);
+	}
+	
+	@DELETE
+	@Path("/categories")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean categories(@FormParam(value="idCat") Long idCategorie){
+		return metier.deleteCategorie(idCategorie);
+	}
+	
+	/******************************/
+	
+	@GET
+	@Path("/livres")
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	public List<Livre> consulterLivres(){
+		return metier.listLivres();
+	}
+	
+	@GET
+	@Path("/livres/{idLivre}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Livre getLivre(@PathParam(value="idLivre") Long idLivre){
+		return metier.getLivre(idLivre);
+	}
+	
+	@PUT
+	@Path("/livres")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Livre updateLivre(Livre p){
+		return metier.updateLivre(p);
 	}
 	
 	@POST
@@ -101,17 +153,128 @@ public class CatalogueService {
 		return metier.deleteLivre(idLivre);
 	}
 	
-	@PUT
-	@Path("/livres")
+	@GET
+	@Path("/livresAut")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Livre updateLivre(Livre p){
-		return metier.updateLivre(p);
+	public List<Livre> livresParMC(@QueryParam(value="idAut")Long idAut){
+		return metier.livresParAut(idAut);
+	}
+	
+	@GET
+	@Path("/categories/{idCat}/livres")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Livre> livresParCat(@PathParam(value="idCat") Long idCategorie){
+		return metier.livresParCat(idCategorie);
+	}
+	
+	/******************************/
+	
+	@GET
+	@Path("/personnes")
+	@Produces(MediaType.APPLICATION_JSON+";charset=utf-8")
+	public List<Personne> consulterPersonnes(){
+		return metier.listPersonnes();
 	}
 	
 	@PUT
-	@Path("/categories")
+	@Path("/personnes")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Categorie updateCategorie(Categorie c){
-		return metier.updateCategorie(c);
-	}	
+	public Personne updatePersonne(Personne p){
+		return metier.updatePersonne(p);
+	}
+	
+	@GET
+	@Path("/personnes/{idPers}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Personne getPersonne(@PathParam(value="idPers") Long idPersonne){
+		return metier.getPersonne(idPersonne);		
+	}
+	
+	@POST
+	@Path("/personnes")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Personne savePersonne(Personne p){
+		return metier.addPersonne(p);
+	}
+	
+	@DELETE
+	@Path("/personnes")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean personnes(@FormParam(value="idPers") Long idPersonne){
+		return metier.deletePersonne(idPersonne);
+	}
+	
+	/******************************/
+	
+	@GET
+	@Path("/prets")
+	@Produces(MediaType.APPLICATION_JSON+";charset=utf-8")
+	public List<Pret> consulterPret(){
+		return metier.listPret();
+	}
+	
+	@PUT
+	@Path("/prets")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Pret updatePret(Pret p){
+		return metier.updatePret(p);
+	}
+	
+	@GET
+	@Path("/prets/{idPret}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Pret getPret(@PathParam(value="idPret") Long idPret){
+		return metier.getPret(idPret);		
+	}
+	
+	@POST
+	@Path("/prets")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Pret savePret(Pret p){
+		return metier.addPret(p);
+	}
+	
+	@DELETE
+	@Path("/prets")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean prets(@FormParam(value="idPret") Long idPret){
+		return metier.deletePret(idPret);
+	}
+	
+	/******************************/
+	
+	@GET
+	@Path("/utilisateurs")
+	@Produces(MediaType.APPLICATION_JSON+";charset=utf-8")
+	public List<Utilisateur> consulterUtilisateur(){
+		return metier.listUtilisateur();
+	}
+	
+	@PUT
+	@Path("/utilisateurs")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Utilisateur updateUtilisateur(Utilisateur u){
+		return metier.updateUtilisateur(u);
+	}
+	
+	@GET
+	@Path("/utilisateurs/{idUtil}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Utilisateur getUtilisateur(@PathParam(value="idUtil") Long idUtilisateur){
+		return metier.getUtilisateur(idUtilisateur);		
+	}
+	
+	@POST
+	@Path("/utilisateurs")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Utilisateur saveUtilisateur(Utilisateur u){
+		return metier.addUtilisateur(u);
+	}
+	
+	@DELETE
+	@Path("/utilisateurs")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean utilisateurs(@FormParam(value="idUtil") Long idUtilisateur){
+		return metier.deleteUtilisateur(idUtilisateur);
+	}
 }
