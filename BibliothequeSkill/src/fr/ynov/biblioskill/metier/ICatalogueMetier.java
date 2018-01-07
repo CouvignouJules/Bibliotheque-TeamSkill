@@ -12,7 +12,6 @@ import fr.ynov.biblioskill.metier.entities.Utilisateur;
 /**
  * 
  * @author adrien
- * Thomas => Vu le nombre de méthodes, j'ai effectué une petite réorganisation (Ce commentaire s'auto-détruira d'ici quelques jours)
  *
  */
 public interface ICatalogueMetier {
