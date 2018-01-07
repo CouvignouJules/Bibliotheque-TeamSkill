@@ -5,7 +5,8 @@ import fr.ynov.biblioskill.utilitaire.DaoEnum;
 
 /**
  * 
- * @author adrien Singleton Factory de la DAO
+ * @author TeamSkill 
+ * Singleton Factory de la DAO
  */
 public class DaoFactory {
 

@@ -17,6 +17,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonSetter;
+/**
+ * 
+ * @author TeamSkill
+ * Définit les attributs et les méthodes d'un objet Livre 
+ */
 
 @Entity
 @Table(name ="livre")

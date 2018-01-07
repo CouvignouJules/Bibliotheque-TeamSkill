@@ -11,15 +11,18 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import fr.ynov.biblioskill.utilitaire.TypeAuteur;
+/**
+ * 
+ * @author TeamSkill
+ * Définit les attributs et les méthodes d'un objet Auteur 
+ */
 
 @Entity
 @Table(name ="auteur")
 @NamedQuery(name="lireAuteurs",query="SELECT a FROM Auteur a")
 @XmlRootElement
 public class Auteur implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

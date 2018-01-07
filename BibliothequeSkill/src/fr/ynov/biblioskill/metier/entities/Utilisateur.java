@@ -14,14 +14,18 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import fr.ynov.biblioskill.utilitaire.AccountType;
+/**
+ * 
+ * @author TeamSkill
+ * Définit les attributs et les méthodes d'un objet Utilisateur 
+ */
+
 @Entity
 @Table(name ="utilisateur")
 @NamedQuery(name="lireUtilisateurs",query="SELECT u FROM Utilisateur u")
 @XmlRootElement
 public class Utilisateur implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

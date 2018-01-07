@@ -2,7 +2,7 @@ package fr.ynov.biblioskill.modele.technique;
 
 /**
  * 
- * @author adrien
+ * @author Teamskill
  * Gère les exceptions relatives à la connexion
  */
 public class ConnexionException extends Exception {

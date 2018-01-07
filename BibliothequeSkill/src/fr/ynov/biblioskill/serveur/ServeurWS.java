@@ -6,7 +6,7 @@ import fr.ynov.biblioskill.service.CatalogueService;
 
 /**
  * 
- * @author Tomafa06
+ * @author TeamSkill
  *	Serveur sur lequel est publié le Web Service (SOAP)
  */
 public class ServeurWS {

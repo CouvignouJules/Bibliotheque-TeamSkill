@@ -9,6 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+/**
+ * 
+ * @author TeamSkill
+ * Définit les attributs et les méthodes d'un objet Categorie 
+ */
 
 @Entity
 @Table(name ="categorie")

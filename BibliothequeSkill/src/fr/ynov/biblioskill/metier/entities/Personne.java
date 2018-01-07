@@ -12,15 +12,18 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+/**
+ * 
+ * @author TeamSkill
+ * Définit les attributs et les méthodes d'un objet Personne 
+ */
 
 @Entity
 @Table(name ="personne")
 @NamedQuery(name="lirePersonnes",query="SELECT p FROM Personne p")
 @XmlRootElement
 public class Personne implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

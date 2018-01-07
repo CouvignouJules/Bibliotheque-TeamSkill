@@ -2,7 +2,7 @@ package fr.ynov.biblioskill.utilitaire;
 
 /**
  * 
- * @author adrien
+ * @author TeamSkill
  * Liste les différents DAO
  */
 public enum DaoEnum {

@@ -15,7 +15,7 @@ import fr.ynov.biblioskill.utilitaire.DaoEnum;
 
 /**
  * 
- * @author adrien
+ * @author TeamSkill
  * Singleton
  * Manager
  */

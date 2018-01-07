@@ -11,8 +11,8 @@ import fr.ynov.biblioskill.metier.entities.Utilisateur;
 
 /**
  * 
- * @author adrien
- *
+ * @author TeamSkill
+ * determine la signature des fonctions a implementer dans le catalogue
  */
 public interface ICatalogueMetier {
 	public Auteur addAuteur(Auteur a);

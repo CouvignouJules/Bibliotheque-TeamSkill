@@ -15,8 +15,8 @@ import fr.ynov.biblioskill.metier.entities.Utilisateur;
 
 /**
  * 
- * @author adrien
- *
+ * @author TeamSkill
+ *	regroupe toute les action possible sur les diferentes entities metier
  */
 public class CatalogueMetierImpl implements ICatalogueMetier{
 	private Map<Long, Auteur> auteurs = new HashMap<Long, Auteur>();

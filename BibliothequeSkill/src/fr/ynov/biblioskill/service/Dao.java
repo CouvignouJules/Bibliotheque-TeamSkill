@@ -1,6 +1,11 @@
 package fr.ynov.biblioskill.service;
 
 import java.util.List;
+/**
+ * 
+ * @author Teamskill
+ * definit les methodes a implementer dans les DAO
+ */
 
 public interface Dao<T> {
 	public List<T> lireTous();

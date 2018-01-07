@@ -2,7 +2,7 @@ package fr.ynov.biblioskill.modele.technique;
 
 /**
  * 
- * @author adrien
+ * @author TeamSkill
  * Gère les exceptions relatives au DAO
  */
 public class DaoException extends Exception {

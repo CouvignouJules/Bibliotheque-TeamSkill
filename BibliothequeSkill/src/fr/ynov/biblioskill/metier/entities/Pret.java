@@ -12,6 +12,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+/**
+ * 
+ * @author TeamSkill
+ * Définit les attributs et les méthodes d'un objet Pret 
+ */
+
 @Entity
 @Table(name ="pret")
 @NamedQuery(name="lirePrets",query="SELECT p FROM Pret p")

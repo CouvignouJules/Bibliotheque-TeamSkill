@@ -11,7 +11,7 @@ import fr.ynov.biblioskill.service.Dao;
 
 /**
  * 
- * @author adrien
+ * @author TeamSkill
  * Permet de récupérer les données des auteurs en BDD
  */
 public class DaoAuteur implements Dao<Auteur> {

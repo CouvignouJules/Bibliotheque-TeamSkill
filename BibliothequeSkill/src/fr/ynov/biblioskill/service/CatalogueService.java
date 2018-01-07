@@ -29,8 +29,8 @@ import fr.ynov.biblioskill.metier.entities.Utilisateur;
 
 /**
  * 
- * @author adrien
- *
+ * @author TeamSkill
+ * liste les action quile est possible d'appeler grace au web service
  */
 @Singleton
 @Path("/catalogue")
@@ -47,7 +47,9 @@ public class CatalogueService {
 	}
 	
 	/******************************/
-	
+	/**
+	 * liste des action du webservice relative aux Auteur
+	 */
 	@GET
 	@Path("/auteurs")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -89,7 +91,9 @@ public class CatalogueService {
 	}
 	
 	/******************************/
-	
+	/**
+	 * liste des action du webservice relative aux Categories
+	 */
 	@GET
 	@Path("/categories")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -131,7 +135,9 @@ public class CatalogueService {
 	}
 	
 	/******************************/
-	
+	/**
+	 * liste des action du webservice relative aux Livres
+	 */
 	@GET
 	@Path("/livres")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -189,7 +195,9 @@ public class CatalogueService {
 	}
 	
 	/******************************/
-	
+	/**
+	 * liste des action du webservice relative aux Personne
+	 */
 	@GET
 	@Path("/personnes")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -231,7 +239,9 @@ public class CatalogueService {
 	}
 	
 	/******************************/
-	
+	/**
+	 * liste des action du webservice relative aux Pret
+	 */
 	@GET
 	@Path("/prets")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -273,7 +283,9 @@ public class CatalogueService {
 	}
 	
 	/******************************/
-	
+	/**
+	 * liste des action du webservice relative aux Utilisateur
+	 */
 	@GET
 	@Path("/utilisateurs")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
