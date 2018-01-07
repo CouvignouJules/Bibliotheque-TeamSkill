@@ -50,7 +50,7 @@ public class CatalogueService {
 	
 	@GET
 	@Path("/auteurs")
-	@Produces(MediaType.APPLICATION_JSON+";charset=utf-8")
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public List<Auteur> consulterAuteurs(){
 		return metier.listAuteurs();
@@ -58,7 +58,7 @@ public class CatalogueService {
 	
 	@PUT
 	@Path("/auteurs")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public Auteur updateAuteur(Auteur a){
 		return metier.updateAuteur(a);
@@ -66,15 +66,15 @@ public class CatalogueService {
 	
 	@GET
 	@Path("/auteurs/{idAut}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public Auteur getAuteur(@PathParam(value="idAut") @WebParam(name="idAut") Long idAuteur){
+	public Auteur getAuteur(@PathParam(value="idAut") Long idAuteur){
 		return metier.getAuteur(idAuteur);		
 	}
 	
 	@POST
 	@Path("/auteurs")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public Auteur saveAuteur(Auteur a){
 		return metier.addAuteur(a);
@@ -82,9 +82,9 @@ public class CatalogueService {
 	
 	@DELETE
 	@Path("/auteurs")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public boolean auteurs(@FormParam(value="idAut") @WebParam(name="idAut") Long idAuteur){
+	public boolean auteurs(@FormParam(value="idAut") Long idAuteur){
 		return metier.deleteAuteur(idAuteur);
 	}
 	
@@ -92,7 +92,7 @@ public class CatalogueService {
 	
 	@GET
 	@Path("/categories")
-	@Produces(MediaType.APPLICATION_JSON+";charset=utf-8")
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public List<Categorie> consulterCategories(){
 		return metier.listCategories();
@@ -100,7 +100,7 @@ public class CatalogueService {
 	
 	@PUT
 	@Path("/categories")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public Categorie updateCategorie(Categorie c){
 		return metier.updateCategorie(c);
@@ -108,15 +108,15 @@ public class CatalogueService {
 	
 	@GET
 	@Path("/categories/{idCat}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public Categorie getCategorie(@PathParam(value="idCat") @WebParam(name="idCat") Long idCategorie){
+	public Categorie getCategorie(@PathParam(value="idCat") Long idCategorie){
 		return metier.getCategorie(idCategorie);		
 	}
 	
 	@POST
 	@Path("/categories")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public Categorie saveCategorie(Categorie c){
 		return metier.addCategorie(c);
@@ -124,9 +124,9 @@ public class CatalogueService {
 	
 	@DELETE
 	@Path("/categories")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public boolean categories(@FormParam(value="idCat") @WebParam(name="idCat") Long idCategorie){
+	public boolean categories(@FormParam(value="idCat") Long idCategorie){
 		return metier.deleteCategorie(idCategorie);
 	}
 	
@@ -142,15 +142,15 @@ public class CatalogueService {
 	
 	@GET
 	@Path("/livres/{idLivre}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public Livre getLivre(@PathParam(value="idLivre") @WebParam(name="idLivre") Long idLivre){
+	public Livre getLivre(@PathParam(value="idLivre") Long idLivre){
 		return metier.getLivre(idLivre);
 	}
 	
 	@PUT
 	@Path("/livres")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public Livre updateLivre(Livre p){
 		return metier.updateLivre(p);
@@ -158,7 +158,7 @@ public class CatalogueService {
 	
 	@POST
 	@Path("/livres")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public Livre saveLivre(Livre p){
 		return metier.addLivre(p);
@@ -166,25 +166,25 @@ public class CatalogueService {
 	
 	@DELETE
 	@Path("/livres")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public boolean deleteLivre(@FormParam(value="idLivre") @WebParam(name="idLivre") Long idLivre){
+	public boolean deleteLivre(@FormParam(value="idLivre") Long idLivre){
 		return metier.deleteLivre(idLivre);
 	}
 	
 	@GET
 	@Path("/livresAut")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public List<Livre> livresParMC(@QueryParam(value="idAut") @WebParam(name="idAut") Long idAut){
+	public List<Livre> livresParMC(@QueryParam(value="idAut") Long idAut){
 		return metier.livresParAut(idAut);
 	}
 	
 	@GET
 	@Path("/categories/{idCat}/livres")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public List<Livre> livresParCat(@PathParam(value="idCat") @WebParam(name="idCat") Long idCategorie){
+	public List<Livre> livresParCat(@PathParam(value="idCat") Long idCategorie){
 		return metier.livresParCat(idCategorie);
 	}
 	
@@ -192,7 +192,7 @@ public class CatalogueService {
 	
 	@GET
 	@Path("/personnes")
-	@Produces(MediaType.APPLICATION_JSON+";charset=utf-8")
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public List<Personne> consulterPersonnes(){
 		return metier.listPersonnes();
@@ -200,7 +200,7 @@ public class CatalogueService {
 	
 	@PUT
 	@Path("/personnes")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public Personne updatePersonne(Personne p){
 		return metier.updatePersonne(p);
@@ -208,15 +208,15 @@ public class CatalogueService {
 	
 	@GET
 	@Path("/personnes/{idPers}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public Personne getPersonne(@PathParam(value="idPers") @WebParam(name="idPers") Long idPersonne){
+	public Personne getPersonne(@PathParam(value="idPers") Long idPersonne){
 		return metier.getPersonne(idPersonne);		
 	}
 	
 	@POST
 	@Path("/personnes")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public Personne savePersonne(Personne p){
 		return metier.addPersonne(p);
@@ -224,9 +224,9 @@ public class CatalogueService {
 	
 	@DELETE
 	@Path("/personnes")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public boolean personnes(@FormParam(value="idPers") @WebParam(name="idPers") Long idPersonne){
+	public boolean personnes(@FormParam(value="idPers") Long idPersonne){
 		return metier.deletePersonne(idPersonne);
 	}
 	
@@ -234,7 +234,7 @@ public class CatalogueService {
 	
 	@GET
 	@Path("/prets")
-	@Produces(MediaType.APPLICATION_JSON+";charset=utf-8")
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public List<Pret> consulterPret(){
 		return metier.listPret();
@@ -242,7 +242,7 @@ public class CatalogueService {
 	
 	@PUT
 	@Path("/prets")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public Pret updatePret(Pret p){
 		return metier.updatePret(p);
@@ -250,15 +250,15 @@ public class CatalogueService {
 	
 	@GET
 	@Path("/prets/{idPret}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public Pret getPret(@PathParam(value="idPret") @WebParam(name="idPret") Long idPret){
+	public Pret getPret(@PathParam(value="idPret") Long idPret){
 		return metier.getPret(idPret);		
 	}
 	
 	@POST
 	@Path("/prets")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public Pret savePret(Pret p){
 		return metier.addPret(p);
@@ -266,9 +266,9 @@ public class CatalogueService {
 	
 	@DELETE
 	@Path("/prets")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public boolean prets(@FormParam(value="idPret") @WebParam(name="idPret") Long idPret){
+	public boolean prets(@FormParam(value="idPret") Long idPret){
 		return metier.deletePret(idPret);
 	}
 	
@@ -276,7 +276,7 @@ public class CatalogueService {
 	
 	@GET
 	@Path("/utilisateurs")
-	@Produces(MediaType.APPLICATION_JSON+";charset=utf-8")
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public List<Utilisateur> consulterUtilisateur(){
 		return metier.listUtilisateur();
@@ -284,7 +284,7 @@ public class CatalogueService {
 	
 	@PUT
 	@Path("/utilisateurs")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public Utilisateur updateUtilisateur(Utilisateur u){
 		return metier.updateUtilisateur(u);
@@ -292,15 +292,15 @@ public class CatalogueService {
 	
 	@GET
 	@Path("/utilisateurs/{idUtil}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public Utilisateur getUtilisateur(@PathParam(value="idUtil") @WebParam(name="idUtil") Long idUtilisateur){
+	public Utilisateur getUtilisateur(@PathParam(value="idUtil") Long idUtilisateur){
 		return metier.getUtilisateur(idUtilisateur);		
 	}
 	
 	@POST
 	@Path("/utilisateurs")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
 	public Utilisateur saveUtilisateur(Utilisateur u){
 		return metier.addUtilisateur(u);
@@ -308,9 +308,9 @@ public class CatalogueService {
 	
 	@DELETE
 	@Path("/utilisateurs")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@WebMethod
-	public boolean utilisateurs(@FormParam(value="idUtil") @WebParam(name="idUtil") Long idUtilisateur){
+	public boolean utilisateurs(@FormParam(value="idUtil") Long idUtilisateur){
 		return metier.deleteUtilisateur(idUtilisateur);
 	}
 }
