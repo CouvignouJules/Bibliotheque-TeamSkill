@@ -46,7 +46,7 @@ public class DaoLivre implements Dao<Livre> {
 	 * @return le Livre
 	 */
 	@Override
-	public Livre lire(int cle) {
+	public Livre lire(Long cle) {
 		return em.find(Livre.class, cle);
 	}
 	
@@ -66,7 +66,7 @@ public class DaoLivre implements Dao<Livre> {
 	 * @param cle
 	 */
 	@Override
-	public void effacer(int cle) {
+	public void effacer(Long cle) {
 		Livre tmp = null;
 		em.getTransaction().begin();
 		tmp = em.find(Livre.class, cle);
@@ -76,11 +76,11 @@ public class DaoLivre implements Dao<Livre> {
 	
 	/**
 	 * Met à jour un livre en base en fonction de son id
-	 * @param index
+	 * @param l
 	 * @param obj
 	 */
 	@Override
-	public void update(int index, Livre obj) {
+	public void update(Long l, Livre obj) {
 		em.getTransaction().begin();
 		update(obj);
 		em.getTransaction().commit();

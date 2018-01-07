@@ -46,7 +46,7 @@ public class DaoAuteur implements Dao<Auteur> {
 	 * @return le Auteur
 	 */
 	@Override
-	public Auteur lire(int cle) {
+	public Auteur lire(Long cle) {
 		return em.find(Auteur.class, cle);
 	}
 	
@@ -66,7 +66,7 @@ public class DaoAuteur implements Dao<Auteur> {
 	 * @param cle
 	 */
 	@Override
-	public void effacer(int cle) {
+	public void effacer(Long cle) {
 		Auteur tmp = null;
 		em.getTransaction().begin();
 		tmp = em.find(Auteur.class, cle);
@@ -80,7 +80,7 @@ public class DaoAuteur implements Dao<Auteur> {
 	 * @param obj
 	 */
 	@Override
-	public void update(int index, Auteur obj) {
+	public void update(Long index, Auteur obj) {
 		em.getTransaction().begin();
 		update(obj);
 		em.getTransaction().commit();

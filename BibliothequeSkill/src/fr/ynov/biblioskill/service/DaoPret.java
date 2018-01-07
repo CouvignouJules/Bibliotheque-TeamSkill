@@ -46,7 +46,7 @@ public class DaoPret implements Dao<Pret> {
 	 * @return le Pret
 	 */
 	@Override
-	public Pret lire(int cle) {
+	public Pret lire(Long cle) {
 		return em.find(Pret.class, cle);
 	}
 	
@@ -66,7 +66,7 @@ public class DaoPret implements Dao<Pret> {
 	 * @param cle
 	 */
 	@Override
-	public void effacer(int cle) {
+	public void effacer(Long cle) {
 		Pret tmp = null;
 		em.getTransaction().begin();
 		tmp = em.find(Pret.class, cle);
@@ -80,7 +80,7 @@ public class DaoPret implements Dao<Pret> {
 	 * @param obj
 	 */
 	@Override
-	public void update(int index, Pret obj) {
+	public void update(Long index, Pret obj) {
 		em.getTransaction().begin();
 		update(obj);
 		em.getTransaction().commit();

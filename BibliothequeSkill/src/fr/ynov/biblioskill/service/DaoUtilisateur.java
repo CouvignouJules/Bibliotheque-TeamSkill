@@ -46,7 +46,7 @@ public class DaoUtilisateur implements Dao<Utilisateur> {
 	 * @return le Utilisateur
 	 */
 	@Override
-	public Utilisateur lire(int cle) {
+	public Utilisateur lire(Long cle) {
 		return em.find(Utilisateur.class, cle);
 	}
 	
@@ -66,7 +66,7 @@ public class DaoUtilisateur implements Dao<Utilisateur> {
 	 * @param cle
 	 */
 	@Override
-	public void effacer(int cle) {
+	public void effacer(Long cle) {
 		Utilisateur tmp = null;
 		em.getTransaction().begin();
 		tmp = em.find(Utilisateur.class, cle);
@@ -80,7 +80,7 @@ public class DaoUtilisateur implements Dao<Utilisateur> {
 	 * @param obj
 	 */
 	@Override
-	public void update(int index, Utilisateur obj) {
+	public void update(Long index, Utilisateur obj) {
 		em.getTransaction().begin();
 		update(obj);
 		em.getTransaction().commit();

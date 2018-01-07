@@ -46,7 +46,7 @@ public class DaoCategorie implements Dao<Categorie> {
 	 * @return la Categorie
 	 */
 	@Override
-	public Categorie lire(int cle) {
+	public Categorie lire(Long cle) {
 		return em.find(Categorie.class, cle);
 	}
 	
@@ -66,7 +66,7 @@ public class DaoCategorie implements Dao<Categorie> {
 	 * @param cle
 	 */
 	@Override
-	public void effacer(int cle) {
+	public void effacer(Long cle) {
 		Categorie tmp = null;
 		em.getTransaction().begin();
 		tmp = em.find(Categorie.class, cle);
@@ -80,7 +80,7 @@ public class DaoCategorie implements Dao<Categorie> {
 	 * @param obj
 	 */
 	@Override
-	public void update(int index, Categorie obj) {
+	public void update(Long index, Categorie obj) {
 		em.getTransaction().begin();
 		update(obj);
 		em.getTransaction().commit();
