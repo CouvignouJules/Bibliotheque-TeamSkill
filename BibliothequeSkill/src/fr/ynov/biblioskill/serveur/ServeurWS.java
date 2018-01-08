@@ -18,7 +18,7 @@ public class ServeurWS {
 	public static void main(String[] args) {
 		// Déclaration des points d'accès sur le serveur
 		String port = "4269";
-		String url="http://localhost:" + port;
+		String url="http://localhost:" + port + "/";
 		
 		// Publication du WebService SOAP
 		Endpoint.publish(url, new CatalogueService());

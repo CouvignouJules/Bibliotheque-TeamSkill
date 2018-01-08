@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,11 +44,14 @@ public class Livre implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar datePublication;
 	@ManyToOne
-	@JoinColumn(name="idCategorie",referencedColumnName="idCategorie",updatable=false,insertable=false) 
+	@JoinColumn(name="idCategorie",referencedColumnName="ID",updatable=false,insertable=false) 
 	private Categorie categorie;
 	@ManyToOne
-	@JoinColumn(name="idAuteur",referencedColumnName="idAuteur",updatable=false,insertable=false) 
+	@JoinColumn(name="idAuteur",referencedColumnName="ID",updatable=false,insertable=false) 
 	private Auteur auteur;
+	@OneToOne
+	@JoinColumn(name="idPret",referencedColumnName="ID",updatable=false,insertable=false)
+	private Pret pret;
 
 	public Livre() {
 		// TODO Auto-generated constructor stub

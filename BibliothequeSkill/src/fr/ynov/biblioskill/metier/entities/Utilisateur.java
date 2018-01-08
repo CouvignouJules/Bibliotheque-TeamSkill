@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,6 +37,10 @@ public class Utilisateur implements Serializable {
 	private AccountType statutCompte;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar derniereConnexion;
+	@OneToOne
+	@JoinColumn(name="idPret",referencedColumnName="ID",updatable=false,insertable=false)
+	private Pret pret;
+	
 
 	public Utilisateur() {
 		// TODO Auto-generated constructor stub
